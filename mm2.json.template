@@ -1,0 +1,19 @@
+{
+  "name":"mm2",
+  "config": {
+    "connector.class": "org.apache.kafka.connect.mirror.MirrorSourceConnector",
+    "name":"mm2",
+    "source.cluster.alias":"source",
+    "topics":"replicate_me",
+    "source.cluster.bootstrap.servers":"localhost:9092",
+    "target.cluster.bootstrap.servers":"BOOTSTRAP_SERVER",
+    "target.cluster.security.protocol": "SASL_SSL",
+    "target.cluster.sasl.jaas.config": "org.apache.kafka.common.security.plain.PlainLoginModule required username='API_KEY' password='API_SECRET';",
+    "target.cluster.sasl.mechanism": "PLAIN",
+    "producer.override.bootstrap.servers":"BOOTSTRAP_SERVER",
+    "producer.override.security.protocol": "SASL_SSL",
+    "producer.override.sasl.jaas.config": "org.apache.kafka.common.security.plain.PlainLoginModule required username='API_KEY' password='API_SECRET';",
+    "producer.override.sasl.mechanism": "PLAIN",
+    "offset-syncs.topic.replication.factor":"1"
+  }
+}
