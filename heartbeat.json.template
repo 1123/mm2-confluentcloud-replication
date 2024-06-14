@@ -1,0 +1,15 @@
+{
+  "name":"heartbeat",
+  "config": {
+    "connector.class": "org.apache.kafka.connect.mirror.MirrorHeartbeatConnector",
+    "name":"heartbeat",
+    "key.converter": "org.apache.kafka.connect.converters.ByteArrayConverter",
+    "value.converter": "org.apache.kafka.connect.converters.ByteArrayConverter",
+    "source.cluster.alias":"source",
+    "source.cluster.bootstrap.servers":"localhost:9092",
+    "target.cluster.bootstrap.servers":"BOOTSTRAP_SERVER",
+    "target.cluster.security.protocol": "SASL_SSL",
+    "target.cluster.sasl.jaas.config": "org.apache.kafka.common.security.plain.PlainLoginModule required username='API_KEY' password='API_SECRET';",
+    "target.cluster.sasl.mechanism": "PLAIN"
+  }
+}

@@ -1,8 +1,8 @@
 {
-  "name":"mm2",
+  "name":"checkpoint",
   "config": {
-    "connector.class": "org.apache.kafka.connect.mirror.MirrorSourceConnector",
-    "name":"mm2",
+    "connector.class": "org.apache.kafka.connect.mirror.MirrorCheckpointConnector",
+    "name":"checkpoint",
     "key.converter": "org.apache.kafka.connect.converters.ByteArrayConverter",
     "value.converter": "org.apache.kafka.connect.converters.ByteArrayConverter",
     "source.cluster.alias":"source",
