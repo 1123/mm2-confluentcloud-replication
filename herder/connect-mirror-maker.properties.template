@@ -1,0 +1,32 @@
+clusters = A, B
+
+config.providers=env
+config.providers.env.class=org.apache.kafka.common.config.provider
+A.bootstrap.servers=localhost:9092,localhost:7092,localhost:6092
+B.bootstrap.servers=CLOUD_BOOT
+B.security.protocol=SASL_SSL
+B.sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username='${API_KEY}' password='${API_SECRET}';
+B.sasl.mechanism=PLAIN
+
+A->B.enabled = true
+
+A->B.topics = .*
+
+# B->A.enabled = true
+# B->A.topics = .*
+
+# Setting replication factor of newly created remote topics
+replication.factor=3
+
+checkpoints.topic.replication.factor=3
+heartbeats.topic.replication.factor=3
+offset-syncs.topic.replication.factor=3
+
+offset.storage.replication.factor=3
+status.storage.replication.factor=3
+config.storage.replication.factor=3
+
+# customize as needed
+# replication.policy.separator = _
+# sync.topic.acls.enabled = false
+# emit.heartbeats.interval.seconds = 5
