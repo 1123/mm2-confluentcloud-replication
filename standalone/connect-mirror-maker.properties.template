@@ -1,9 +1,7 @@
 clusters = A, B
 
-config.providers=env
-config.providers.env.class=org.apache.kafka.common.config.provider
 A.bootstrap.servers=localhost:9092,localhost:7092,localhost:6092
-B.bootstrap.servers=CLOUD_BOOT
+B.bootstrap.servers=${BOOTSTRAP_SERVER}
 B.security.protocol=SASL_SSL
 B.sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username='${API_KEY}' password='${API_SECRET}';
 B.sasl.mechanism=PLAIN
@@ -25,6 +23,8 @@ offset-syncs.topic.replication.factor=3
 offset.storage.replication.factor=3
 status.storage.replication.factor=3
 config.storage.replication.factor=3
+
+dedicated.mode.enable.internal.rest=true
 
 # customize as needed
 # replication.policy.separator = _
